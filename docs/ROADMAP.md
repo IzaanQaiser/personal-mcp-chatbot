@@ -1,5 +1,7 @@
 # Roadmap
 
+Canonical phase plan: `docs/PHASE_PLAN.md`
+
 ## Phase 0: Repo + Docs
 
 - create `/docs`

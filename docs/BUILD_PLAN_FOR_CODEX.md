@@ -1,5 +1,7 @@
 # Build Plan for Codex
 
+Canonical phase plan: `docs/PHASE_PLAN.md`
+
 ## Instruction
 
 Codex should build the app in phases.

@@ -1,5 +1,7 @@
 # Setup Guide
 
+Canonical phase plan: `docs/PHASE_PLAN.md`
+
 ## Recommended Stack
 
 - TypeScript
