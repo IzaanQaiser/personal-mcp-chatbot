@@ -5,7 +5,7 @@
 ```txt
 User
  ↓
-Chat UI
+Web UI (local app)
  ↓
 Backend API
  ↓
@@ -21,7 +21,7 @@ MCP Server
  ↓
 Query Layer
  ↓
-SQLite Database
+Supabase (Postgres + pgvector)
  ↑
 Sync Engine
  ↑
@@ -34,8 +34,8 @@ Connectors
 2. Backend sends the request to the agent runtime.
 3. Runtime model decides what tools are needed.
 4. Tool orchestrator executes MCP tools.
-5. MCP tools query the local database.
-6. Relevant data is returned to the model.
+5. MCP tools query Supabase structured tables and vector indexes.
+6. Relevant records are returned to the model with source references.
 7. Model generates a grounded answer.
 
 ## Sync Flow
@@ -43,12 +43,13 @@ Connectors
 1. Sync engine runs manually or on a schedule.
 2. Connectors fetch external data.
 3. Data is normalized.
-4. Normalized records are upserted into SQLite.
-5. Sync state is updated.
+4. Normalized records are upserted into Supabase Postgres tables.
+5. Embeddings are generated for eligible text records and upserted into `pgvector` columns/tables.
+6. Sync state is updated.
 
 ## Core Components
 
-### Chat UI
+### Web UI
 
 Responsibilities:
 
@@ -56,7 +57,8 @@ Responsibilities:
 - chat history display
 - answer display
 - source display
-- settings page
+- MCP connection settings
+- files indexing status
 
 ### Backend API
 
@@ -94,7 +96,7 @@ Responsibilities:
 - expose tools
 - expose resources
 - validate schemas
-- query local data
+- query Supabase data
 
 ### Connector Layer
 
@@ -107,20 +109,30 @@ Responsibilities:
 - normalization
 - retries
 
-### SQLite Database
+### Supabase Data Layer
 
 Responsibilities:
 
-- local source of truth
-- normalized data storage
-- queryable context
+- canonical structured storage for facts
+- vector storage for semantic retrieval
 - sync state storage
+- memory and conversation storage
+- file/chunk indexing storage
+
+### Retrieval Layer
+
+Responsibilities:
+
+- deterministic SQL retrieval for exact date/fact questions
+- vector similarity retrieval for fuzzy file/content queries
+- hybrid ranking and context packing
 
 ## Architecture Rules
 
 - Do not query live APIs during normal chatbot answers unless explicitly needed.
-- Prefer local DB reads.
+- Prefer Supabase reads.
 - Keep connectors isolated.
 - Keep model provider swappable.
 - Keep MCP tools deterministic.
-- Keep all destructive actions disabled in MVP.
+- Keep destructive actions disabled in MVP.
+- Deadline and schedule answers must prioritize structured deterministic queries.

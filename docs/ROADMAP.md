@@ -7,13 +7,14 @@
 - setup coding rules
 - decide initial stack
 
-## Phase 1: Local Core
+## Phase 1: Supabase Core
 
 - TypeScript project
-- SQLite schema
+- Supabase project
+- Postgres schema
+- `pgvector` enablement
 - fake seed data
 - query layer
-- MCP server
 - basic MCP tools
 
 ## Phase 2: Runtime Chatbot
@@ -22,54 +23,63 @@
 - model provider abstraction
 - cheap cloud model provider
 - tool calling
-- local DB retrieval
+- structured + vector retrieval
 
-## Phase 3: Google Calendar
+## Phase 3: Files Knowledge Base
+
+- `/files` recursive indexing
+- chunking + embeddings
+- semantic file search tool
+- reindex pipeline
+
+## Phase 4: Google Calendar
 
 - Google OAuth
 - calendar sync
 - event normalization
 - sync status
 
-## Phase 4: Outlook
+## Phase 5: Outlook
 
 - Microsoft OAuth
 - calendar sync
 - mail summary sync
 - sync status
 
-## Phase 5: D2L
+## Phase 6: D2L
 
 - investigate official API access
 - implement API connector if available
 - otherwise implement ICS/import fallback
 
-## Phase 6: Briefings + Notifications
+## Phase 7: Briefings + Notifications
 
 - daily briefing
 - weekly briefing
 - conflict alerts
 - stale sync alerts
 
-## Phase 7: Memory
+## Phase 8: Memory
 
 - session memory
 - user preferences
 - editable long-term memory
+- memory embeddings
 
-## Phase 8: Semantic Search
+## Phase 9: Reliability + Hardening
 
-- embeddings
-- vector search
-- better ranking
+- RLS policy audit
+- retry/backoff tuning
+- sync observability
+- backup/restore playbook
 
-## Phase 9: Desktop/Mobile
+## Phase 10: Desktop/Mobile
 
 - desktop app
 - menu bar app
 - mobile push notifications
 
-## Phase 10: Cowork-Style Workflows
+## Phase 11: Cowork-Style Workflows
 
 - proactive workflows
 - cross-app orchestration

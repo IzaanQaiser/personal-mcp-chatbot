@@ -22,6 +22,10 @@ Upcoming school deadlines.
 
 Recent important emails.
 
+### lifehub://files/index-status
+
+Current `/files` index status.
+
 ### lifehub://sync/status
 
 Status of all source syncs.

@@ -21,6 +21,7 @@ src/
   mcp/
   models/
   notifications/
+  retrieval/
   sync/
   tools/
   types/
@@ -46,6 +47,13 @@ Use schemas for:
 - connector outputs
 - database writes
 - model provider responses
+
+## Data Rules
+
+- Use migrations for schema changes.
+- Keep structured fact queries deterministic.
+- Keep embedding dimensions and indexes consistent with the selected model.
+- Rebuild vector indexes safely when chunking rules change.
 
 ## Commits
 

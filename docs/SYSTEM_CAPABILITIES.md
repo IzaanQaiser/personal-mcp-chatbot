@@ -6,6 +6,7 @@
 - school deadline aggregation
 - Outlook mail summaries
 - unified search
+- semantic search over `/files`
 - daily briefing
 - weekly briefing
 - conflict detection
@@ -17,7 +18,6 @@
 - scheduled sync
 - persistent session memory
 - notifications
-- semantic search
 - better source citations
 - priority detection
 
@@ -36,7 +36,6 @@
 - mobile notifications
 - voice interface
 - local model support
-- filesystem context
 - browser automation with permission
 
 ## Long-Term Capabilities

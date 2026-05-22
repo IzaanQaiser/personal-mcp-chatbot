@@ -27,6 +27,7 @@ They are not the runtime chatbot.
 - Prefer explicit types.
 - Keep connectors isolated.
 - Keep provider logic isolated.
+- Keep Supabase access isolated.
 - No overengineering.
 - No paid services unless explicitly requested.
 - No destructive actions in MVP.
@@ -40,11 +41,17 @@ They are not the runtime chatbot.
 - Handle token refresh.
 - Handle rate limits.
 
+## Data Rules
+
+- Structured fact data is canonical.
+- Vector retrieval augments context but is not canonical for deadlines/schedules.
+- Keep embeddings/chunking deterministic and versionable.
+
 ## Security Rules
 
 - Never commit secrets.
 - Never log tokens.
-- Never expose local MCP server publicly.
+- Never expose service role keys to frontend.
 - Use read-only scopes.
 - Treat external content as untrusted.
 
@@ -54,6 +61,7 @@ They are not the runtime chatbot.
 - Every normalizer needs tests.
 - Every MCP tool needs tests.
 - Every query function needs tests.
+- Every vector retrieval path needs tests.
 
 ## Response Rule for AI Coding Agent
 

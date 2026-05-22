@@ -2,9 +2,9 @@
 
 ## Tool Philosophy
 
-MCP tools should expose clean, structured access to local life data.
+MCP tools should expose clean, structured access to life data.
 
-Tools should usually query the local SQLite database, not live external APIs.
+Tools should query Supabase canonical tables and vector indexes, not live external APIs.
 
 ## MVP Tools
 
@@ -71,6 +71,19 @@ Input:
 
 Returns matching email summaries.
 
+### search_files_semantic
+
+Input:
+
+```ts
+{
+  query: string;
+  topK?: number;
+}
+```
+
+Returns semantically similar `/files` chunks with file references.
+
 ### get_conflicts
 
 Input:
@@ -107,6 +120,10 @@ Returns:
 
 Triggers all configured source syncs.
 
+### reindex_files
+
+Rebuilds `/files` chunk + vector index.
+
 ## Tool Output Rules
 
 Every tool should return:
@@ -116,6 +133,12 @@ Every tool should return:
 - source record IDs
 - timestamps
 - stale data warnings if relevant
+
+Vector retrieval tools should also return:
+
+- similarity score
+- file path
+- chunk index
 
 ## Future Tools
 

@@ -8,9 +8,11 @@ Do not jump directly to OAuth.
 
 ## Phase 1
 
-Build local core:
+Build the core data platform:
 
-- SQLite schema
+- Supabase project setup
+- Postgres schema migrations
+- `pgvector` setup
 - seed data
 - query functions
 - MCP server
@@ -24,10 +26,21 @@ Build runtime chatbot:
 - model provider interface
 - one provider implementation
 - tool-calling loop
+- hybrid retrieval (structured + vector)
 - chat endpoint
 - minimal UI
 
 ## Phase 3
+
+Build files indexing:
+
+- `/files` scanner
+- chunking pipeline
+- embedding pipeline
+- semantic retrieval tool
+- reindex command + tests
+
+## Phase 4
 
 Build Google connector:
 
@@ -36,7 +49,7 @@ Build Google connector:
 - calendar sync
 - tests
 
-## Phase 4
+## Phase 5
 
 Build Outlook connector:
 
@@ -45,7 +58,7 @@ Build Outlook connector:
 - mail summary sync
 - tests
 
-## Phase 5
+## Phase 6
 
 Build D2L connector:
 
@@ -54,7 +67,7 @@ Build D2L connector:
 - ICS fallback
 - tests
 
-## Phase 6
+## Phase 7
 
 Build briefings:
 
@@ -63,7 +76,7 @@ Build briefings:
 - conflict detection
 - stale sync warnings
 
-## Phase 7
+## Phase 8
 
 Build notifications:
 

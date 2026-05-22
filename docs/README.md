@@ -2,7 +2,7 @@
 
 This `/docs` folder defines the full product, architecture, coding rules, security model, integrations, agent runtime, and build roadmap for Life MCP Hub.
 
-Life MCP Hub is a local-first personal AI operating layer inspired by Claude Cowork-style workflows.
+Life MCP Hub is a Supabase-first personal AI operating layer inspired by Claude Cowork-style workflows.
 
 Codex/Cursor are used to build the app.
 

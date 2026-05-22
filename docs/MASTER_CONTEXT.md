@@ -2,7 +2,7 @@
 
 ## Project
 
-Life MCP Hub is a local-first personal AI operating layer.
+Life MCP Hub is a Supabase-backed personal AI operating layer.
 
 It aggregates the user's personal data from tools like Google Calendar, Outlook, D2L/Brightspace, and future services into one AI-accessible system.
 
@@ -39,7 +39,7 @@ It is a personal AI operating layer with:
 
 - synced personal context
 - MCP tools
-- local database
+- Supabase Postgres + pgvector data platform
 - agent runtime
 - persistent memory
 - notifications
@@ -55,6 +55,7 @@ MVP:
 - Outlook Calendar
 - Outlook Mail
 - D2L/Brightspace
+- local `/files` repository ingestion
 
 Future:
 
@@ -66,14 +67,13 @@ Future:
 - GitHub
 - Apple Notes
 - Apple Reminders
-- local filesystem
 - browser history/bookmarks
 - SMS/iMessage where legally and technically possible
 
 ## Core Principles
 
-- Local-first
-- Cheap/free to operate
+- Reliable facts first
+- Structured canonical storage for critical data
 - Read-only by default
 - Modular connectors
 - Provider-agnostic model layer

@@ -12,16 +12,18 @@ The chatbot should answer using the right context, not all context.
 - sync metadata
 - session memory
 - user preferences
+- indexed `/files` chunks
 - future connected sources
 
 ## Retrieval Strategy
 
 1. Understand the user query.
-2. Determine relevant source types.
-3. Query local database.
-4. Rank by date, relevance, and importance.
-5. Compress or summarize if needed.
-6. Inject structured context into the model.
+2. Determine whether the query is fact/date-critical or semantic.
+3. Run deterministic structured retrieval from Supabase tables.
+4. Run vector retrieval for fuzzy text context when helpful.
+5. Rank and merge results by relevance, freshness, and source confidence.
+6. Compress or summarize if needed.
+7. Inject structured context into the model.
 
 ## Prompt Context Rules
 
@@ -32,6 +34,7 @@ The chatbot should answer using the right context, not all context.
 - Include URLs where available.
 - Mark stale data clearly.
 - Mark missing data clearly.
+- Include retrieval type (`structured` or `vector`) per result.
 
 ## Grounding Rule
 
@@ -39,6 +42,8 @@ If the data is not present, the model must say it is not present.
 
 Never fabricate deadlines, events, emails, or source details.
 
-## Future
+## Reliability Rule
 
-Add embeddings for semantic search after basic keyword/date search works.
+For critical answers (deadlines, schedules, conflicts), prefer deterministic structured retrieval.
+
+Use vector retrieval as augmentation, not the final authority for time-sensitive facts.

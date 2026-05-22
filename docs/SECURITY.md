@@ -2,11 +2,13 @@
 
 ## Threat Model
 
-The app stores sensitive personal information locally.
+The app handles sensitive personal information across local runtime components and Supabase-hosted storage.
 
 Risks:
 
 - leaked OAuth tokens
+- leaked Supabase service role key
+- weak or missing RLS policies
 - exposed local server
 - prompt injection through emails/messages
 - accidental public repo commits
@@ -15,17 +17,24 @@ Risks:
 
 ## Rules
 
-- Bind servers to localhost only.
+- Bind local app servers to localhost only by default.
 - Never expose MCP server publicly.
 - Never commit `.env`.
-- Never commit local database files.
 - Never commit OAuth token files.
+- Never expose `SUPABASE_SERVICE_ROLE_KEY` to frontend code.
 - Use read-only scopes in MVP.
 - Validate all tool inputs.
 - Avoid arbitrary code execution tools.
 - Avoid unrestricted filesystem access.
 - Do not log secrets.
 - Minimize raw private data sent to LLM providers.
+
+## Supabase Security Rules
+
+- Enable and audit RLS on all user data tables.
+- Use service role keys only in trusted backend processes.
+- Prefer narrowly scoped policies, even for single-user MVP.
+- Rotate leaked keys immediately.
 
 ## OAuth Token Storage
 
@@ -45,7 +54,7 @@ Not acceptable:
 
 ## Prompt Injection Protection
 
-Emails, calendar descriptions, and D2L content may contain malicious instructions.
+Emails, calendar descriptions, D2L content, and files may contain malicious instructions.
 
 The model must treat retrieved data as untrusted content.
 

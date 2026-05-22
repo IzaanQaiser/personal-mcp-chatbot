@@ -12,7 +12,7 @@ Each connector should:
 - handle pagination
 - handle rate limits
 - handle token refresh
-- upsert into database
+- upsert into Supabase tables
 - update sync state
 
 ## Connector Interface
@@ -55,7 +55,7 @@ MVP sync window:
 
 ### Normalization
 
-Google event → CalendarEvent
+Google event -> CalendarEvent
 
 Required fields:
 
@@ -77,11 +77,11 @@ Sync Outlook Calendar and optional Outlook Mail.
 
 ### Calendar
 
-Microsoft Graph calendar events → CalendarEvent
+Microsoft Graph calendar events -> CalendarEvent
 
 ### Mail
 
-Microsoft Graph messages → EmailItem
+Microsoft Graph messages -> EmailItem
 
 MVP should only fetch recent messages, not the entire mailbox.
 
@@ -117,6 +117,27 @@ If API access is unavailable:
 3. CSV import
 4. manual file import
 5. browser-assisted export with user permission
+
+## Files Connector
+
+### Purpose
+
+Index local repository `/files` into `files` and `file_chunks`.
+
+### Flow
+
+1. scan files recursively
+2. detect changed files via hash
+3. chunk text content
+4. generate embeddings
+5. upsert chunks and vectors
+
+### Rules
+
+- skip binary/unreadable files
+- enforce max file size
+- store file path and timestamps
+- allow reindex and full rebuild
 
 ## Connector Rules
 

@@ -11,17 +11,19 @@ Most bugs will come from:
 - stale data
 - API pagination
 - provider-specific model behavior
+- chunking/embedding drift
 
 ## Required Test Areas
 
-### Database
+### Database + Migrations
 
-- create schema
+- migration apply/rollback
 - insert event
 - update event
-- deduplicate event
+- deduplicate event (`source + external_id`)
 - query date range
 - query upcoming deadlines
+- vector similarity query sanity
 
 ### Connectors
 
@@ -32,6 +34,14 @@ Most bugs will come from:
 - pagination handling
 - failed API response handling
 
+### Files Indexing
+
+- recursive scan
+- hash-based change detection
+- chunk boundaries
+- embedding generation failure handling
+- reindex behavior
+
 ### MCP Tools
 
 - get_today_schedule
@@ -39,6 +49,7 @@ Most bugs will come from:
 - get_upcoming_deadlines
 - search_calendar_events
 - get_conflicts
+- search_files_semantic
 - daily_briefing
 
 ### Model Provider
@@ -65,6 +76,9 @@ Most bugs will come from:
 - invalid dates
 - expired tokens
 - network failures
+- vector dimension mismatch
+- very large files
+- binary files in `/files`
 
 ## Rule
 

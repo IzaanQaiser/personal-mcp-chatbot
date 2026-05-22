@@ -30,6 +30,15 @@ The target experience is similar to Claude Cowork-style systems:
 - proactive assistance
 - shared memory across sessions
 
+## Reliability Direction
+
+To make the system dependable for critical items like assignments and due dates:
+
+- canonical facts live in structured Supabase Postgres tables
+- semantic retrieval uses Supabase `pgvector`
+- deterministic date queries are preferred for deadline/schedule answers
+- vector retrieval augments context but does not replace hard date logic
+
 ## North Star
 
 The user opens one interface and asks:

@@ -22,10 +22,11 @@ The user can ask:
 - Give me my daily briefing.
 - Search for a school deadline.
 - Search for a calendar event.
+- Search my local `/files` knowledge base.
 
 ## MVP Features
 
-### 1. Local Sync
+### 1. Source Sync
 
 Sync data from:
 
@@ -34,19 +35,25 @@ Sync data from:
 - Outlook Mail
 - D2L/Brightspace
 
-### 2. Unified Local Database
+### 2. Supabase Data Platform
 
-Store normalized data in SQLite.
+Store normalized data in Supabase Postgres.
 
-### 3. MCP Server
+Store embeddings in Supabase `pgvector` for semantic retrieval.
+
+### 3. Local Files Ingestion
+
+Index repository `/files` documents into chunk + embedding records.
+
+### 4. MCP Server
 
 Expose personal data through MCP tools/resources.
 
-### 4. Runtime Chatbot
+### 5. Runtime Chatbot
 
 Use a separate LLM provider for the chatbot.
 
-### 5. Daily Briefing
+### 6. Daily Briefing
 
 Generate a daily summary with:
 
@@ -56,13 +63,13 @@ Generate a daily summary with:
 - important unread emails
 - notable changes
 
-### 6. Conflict Detection
+### 7. Conflict Detection
 
 Detect overlapping events.
 
-### 7. Search
+### 8. Search
 
-Search across calendar events, deadlines, and emails.
+Search across calendar events, deadlines, emails, and `/files`.
 
 ## Non-Goals for MVP
 
@@ -73,8 +80,6 @@ The MVP will not:
 - delete data
 - write to D2L
 - support multi-user accounts
-- require cloud hosting
-- expose the MCP server publicly
 - do autonomous destructive actions
 
 ## Success Criteria
@@ -84,7 +89,8 @@ The MVP is successful when:
 - Google Calendar sync works
 - Outlook sync works
 - D2L sync or fallback import works
-- local DB stores normalized data
+- Supabase stores normalized source data
+- Supabase vector retrieval works for `/files`
 - MCP tools return useful data
 - chatbot can answer grounded questions
 - daily briefing is genuinely useful
