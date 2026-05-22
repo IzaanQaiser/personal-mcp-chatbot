@@ -1,0 +1,33 @@
+{
+  "name": "personal-mcp-chatbot",
+  "version": "0.1.0",
+  "description": "Life MCP Hub phase 1 core",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev:mcp": "tsx src/mcp/server.ts",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "mcp",
+    "supabase",
+    "lifehub"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@11.2.2",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@supabase/supabase-js": "^2.106.1",
+    "dotenv": "^17.4.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  }
+}

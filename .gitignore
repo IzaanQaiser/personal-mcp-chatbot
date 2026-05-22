@@ -1,1 +1,28 @@
+# Environment
 .env
+.env.local
+.env.*.local
+!.env.example
+
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build / test output
+dist
+coverage
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Supabase local artifacts
+supabase/.branches
+supabase/.temp
+
+# OS
+.DS_Store
