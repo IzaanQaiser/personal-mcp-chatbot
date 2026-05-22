@@ -29,6 +29,7 @@ It consolidates:
 ### Exit Criteria
 
 - core docs exist and are internally consistent
+- stack choices are explicitly documented in `docs/STACK_DECISIONS.md`
 
 ## Phase 1: Supabase Core
 

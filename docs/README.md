@@ -7,3 +7,8 @@ Life MCP Hub is a Supabase-first personal AI operating layer inspired by Claude 
 Codex/Cursor are used to build the app.
 
 The runtime chatbot is a separate LLM provider such as OpenAI, Anthropic, Gemini, or Ollama.
+
+Canonical planning docs:
+
+- `docs/PHASE_PLAN.md`
+- `docs/STACK_DECISIONS.md`
